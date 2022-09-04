@@ -1,4 +1,5 @@
 <template>
+  <ModalView/>
   <MobileMenuV v-bind:mbmenu="mbMenuData"/>
   <TopBannerV/>
 
@@ -15,6 +16,7 @@
   import { onMounted } from 'vue';
   import $ from 'jquery';
 
+  import ModalView from '@/components/ModalView.vue';
   import MobileMenuV from '@/components/MobileMenuView.vue';
   import TopBannerV from '@/components/TopBannerView.vue';
   import HeaderV from '@/components/HeaderView.vue';
@@ -26,6 +28,7 @@
   export default {
     name: 'App',
     components: {
+      ModalView,
       MobileMenuV,
       TopBannerV,
       HeaderV,
