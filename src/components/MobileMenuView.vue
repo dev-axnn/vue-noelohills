@@ -25,18 +25,17 @@
 </template>
 
 <script>
-  import { onMounted, computed } from 'vue';
-  import $ from 'jquery';
+  import { computed, onUpdated } from 'vue';
   import { useStore } from 'vuex';
+  import $ from 'jquery';
 
   export default {
     setup(){
       const store = useStore();
       const mbmenu = computed( () => store.getters.getMbMenuData );
-      store.dispatch('fetchMenu');
 
       // 화면 html 구성이 완료된 후
-      onMounted(() => {
+      onUpdated(() => {
         // 모바일 메뉴
         let mb_div = $('.mb-div');
         // 모바일 보기 버튼 기능 

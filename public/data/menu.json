@@ -1,0 +1,59 @@
+[
+  {
+    "tagtype": "span",
+    "mainmenu": "SHOP",
+    "mainlink": "",
+    "submenuArr": [
+      {"link": "#", "title": "ALL PRODUCT"},
+      {"link": "#", "title": "NEWBORN"},
+      {"link": "#", "title": "BABY"},
+      {"link": "#", "title": "FAMILY"},
+      {"link": "#", "title": "BATH GOODS"},
+      {"link": "#", "title": "PRESENTS"}
+    ]
+  },
+  {
+    "tagtype": "span",
+    "mainmenu": "ABOUT",
+    "mainlink": "",
+    "submenuArr": [
+      {"link": "#", "title": "BRAND STORY"},
+      {"link": "#", "title": "WHO WE ARE"},
+      {"link": "#", "title": "MAKE A WISH"},
+      {"link": "#", "title": "PRESS"}
+    ]
+  },
+  {
+    "tagtype": "span",
+    "mainmenu": "TRUST",
+    "mainlink": "",
+    "submenuArr": [
+      {"link": "#", "title": "FOOD GRADE"},
+      {"link": "#", "title": "PENTACERA™"},
+      {"link": "#", "title": "BABY SKINCARE"},
+      {"link": "#", "title": "CERTIFICATION"},
+      {"link": "#", "title": "INGREDIENT"}
+    ]
+  },
+  {
+    "tagtype": "a",
+    "mainmenu": "STOKISTS",
+    "mainlink": "a.html",
+    "submenu": []
+  },
+  {
+    "tagtype": "a",
+    "mainmenu": "REVIEW",
+    "mainlink": "b.html",
+    "submenu": []
+  },
+  {
+    "tagtype": "span",
+    "mainmenu": "BENEFITS",
+    "mainlink": "",
+    "submenuArr": [
+      {"link": "#", "title": "EVENTS"},
+      {"link": "#", "title": "MEMBERS"}
+    ]
+  }
+]

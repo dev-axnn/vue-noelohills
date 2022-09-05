@@ -13,8 +13,7 @@
 </template>
 
 <script>
-  import { onMounted } from 'vue';
-  import $ from 'jquery';
+  import { useStore } from 'vuex';
 
   import ModalView from '@/components/ModalView.vue';
   import MobileMenuV from '@/components/MobileMenuView.vue';
@@ -38,25 +37,8 @@
       FooterV
     },
     setup(){
-      onMounted(() => {
-        // 스크롤시 header 고정
-        let header = $('.header');
-        let wrap = $('.wrap');
-        let fixY = $('.banner').height();
-
-        $(window).scroll(function () {
-          // 스크롤바의 세로상단 px 값
-          let temp = $(window).scrollTop();
-          // 50 은 banner 의 높이값 px
-          if (temp > fixY) {
-            header.addClass('header-fix');
-            wrap.addClass('wrap-fix');
-          } else {
-            header.removeClass('header-fix');
-            wrap.removeClass('wrap-fix');
-          }
-        });
-      });
+      const store = useStore();
+      store.dispatch('fetchMenu');
 
       return {
 

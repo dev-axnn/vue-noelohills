@@ -6,47 +6,11 @@
       <a href="#" class="logo"></a>
       <div class="gnb">
         <ul class="menu clearfix">
-          <li>
-            <a href="#">SHOP</a>
-            <ul class="submenu">
-              <li><a href="#">ALL PRODUCT</a></li>
-              <li><a href="#">NEWBORN</a></li>
-              <li><a href="#">BABY</a></li>
-              <li><a href="#">FAMILY</a></li>
-              <li><a href="#">BATH GOODS</a></li>
-              <li><a href="#">PRESENTS</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">ABOUT</a>
-            <ul class="submenu">
-              <li><a href="#">BRAND STORY</a></li>
-              <li><a href="#">WHO WE ARE</a></li>
-              <li><a href="#">MAKE A WISH</a></li>
-              <li><a href="#">PRESS</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">TRUST</a>
-            <ul class="submenu">
-              <li><a href="#">FOOD GRADE</a></li>
-              <li><a href="#">PENTACERA™</a></li>
-              <li><a href="#">BABY SKINCARE</a></li>
-              <li><a href="#">CERTIFICATION</a></li>
-              <li><a href="#">INGREDIENT</a></li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">STOKISTS</a>
-          </li>
-          <li>
-            <a href="#">REVIEW</a>
-          </li>
-          <li>
-            <a href="#">BENEFITS</a>
-            <ul class="submenu">
-              <li><a href="#">EVENTS</a></li>
-              <li><a href="#">MEMBERS</a></li>
+          <li v-for="(item, index) in menuData" :key="index">
+            <a :href="item.mainlink">{{item.mainmenu}}</a>
+            <ul class="submenu" v-if="item.tagtype == 'span'">
+              <li v-for="(subitem, subindex) in item.submenuArr" :key="subindex">
+              <a :href="subitem.link">{{subitem.title}}</a></li>
             </ul>
           </li>
         </ul>
@@ -63,9 +27,40 @@
 </template>
 
 <script>
-export default {
+  import { computed, onUpdated } from 'vue';
+  import { useStore } from 'vuex';
+  import $ from 'jquery';
 
-}
+  export default {
+    setup(){
+      const store = useStore();
+      const menuData = computed(() => store.getters.getMbMenuData);
+
+      onUpdated(() => {
+        // 스크롤시 header 고정
+        let header = $('.header');
+        let wrap = $('.wrap');
+        let fixY = $('.banner').height();
+
+        $(window).scroll(function () {
+          // 스크롤바의 세로상단 px 값
+          let temp = $(window).scrollTop();
+          // 50 은 banner 의 높이값 px
+          if (temp > fixY) {
+            header.addClass('header-fix');
+            wrap.addClass('wrap-fix');
+          } else {
+            header.removeClass('header-fix');
+            wrap.removeClass('wrap-fix');
+          }
+        });
+      });
+
+      return{
+        menuData
+      }
+    }
+  }
 </script>
 
 <style>
