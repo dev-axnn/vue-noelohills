@@ -1,19 +1,31 @@
 <template>
   <!-- TOPBANNER -->
   <div class="banner">
-    <div class="swiper-container sw-banner">
-      <!-- 슬라이드 내용 -->
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><a href="#" class="banner-1"></a></div>
-        <div class="swiper-slide"><a href="#" class="banner-2"></a></div>
-        <div class="swiper-slide"><a href="#" class="banner-3"></a></div>
-      </div>
+    <Swiper
+      :modules="modules"
+      :autoplay="{
+        delay: 4000,
+        disableOnInteraction: false
+      }"
+      :speed=1000
+      :loop="true"
+      :pagination="{
+        el: '.sw-banner-pg'
+      }"
+      :effect="'fade'"
+      class="sw-banner"
+    >
+      <SwiperSlide class="swiper-slide"><a href="#" class="banner-1"></a></SwiperSlide>
+      <SwiperSlide class="swiper-slide"><a href="#" class="banner-2"></a></SwiperSlide>
+      <SwiperSlide class="swiper-slide"><a href="#" class="banner-3"></a></SwiperSlide>
+
       <!-- 슬라이드 컨트롤 -->
       <div class="sw-banner-control">
         <!-- 페이지네이션 -->
         <div class="sw-banner-pg"></div>
       </div>
-    </div>
+    </Swiper>
+
     <button class="banner-close"></button>
   </div>
 </template>
@@ -22,7 +34,18 @@
   import { onMounted, ref } from 'vue';
   import $ from 'jquery';
 
+  import { Autoplay, Pagination, EffectFade } from 'swiper';
+  import { Swiper, SwiperSlide } from 'swiper/vue';
+  import 'swiper/css';
+  import 'swiper/css/pagination';
+  import 'swiper/css/effect-fade';
+
   export default {
+    components: {
+      Swiper,
+      SwiperSlide
+    },
+
     setup(){
       onMounted(() => {
         // banner 의 높이값 px
@@ -37,7 +60,7 @@
         });
       });
       return {
-
+        modules: [Autoplay, Pagination, EffectFade]
       }
     }
   }
