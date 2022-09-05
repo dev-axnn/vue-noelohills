@@ -8,6 +8,10 @@
         disableOnInteraction: false,
       }"
       :loop="true"
+      :pagination="{
+        el: '.sw-visual-pg',
+        clickable: 'true'
+      }"
       @swiper="onSwiper"
       @slideChange="onSlideChange"
       class="sw-visual"
@@ -21,21 +25,22 @@
           :vBt="item.vBt"
         />
       </swiper-slide>
+      <!-- 슬라이드 컨트롤 -->
+      <div class="sw-visual-control">
+        <div class="sw-visual-pg"></div>
+      </div>
     </Swiper>
 
-    <!-- 슬라이드 컨트롤 -->
-    <div class="sw-visual-control">
-      <div class="sw-visual-pg"></div>
-    </div>
   </section>
 </template>
 
 <script>
   import { ref } from 'vue';
 
-  import { Autoplay } from 'swiper';
+  import { Autoplay, Pagination } from 'swiper';
   import { Swiper, SwiperSlide } from 'swiper/vue';
   import 'swiper/css';
+  import 'swiper/css/pagination';
 
   import VisualSwV from '@/components/VisualSwiper.vue';
   
@@ -87,7 +92,7 @@
       return{
         onSwiper,
         onSlideChange,
-        modules: [Autoplay],
+        modules: [Autoplay, Pagination],
         slideData
       }
     }
