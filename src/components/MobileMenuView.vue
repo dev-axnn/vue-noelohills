@@ -25,13 +25,16 @@
 </template>
 
 <script>
-  import { onMounted } from 'vue';
+  import { onMounted, computed } from 'vue';
   import $ from 'jquery';
+  import { useStore } from 'vuex';
 
   export default {
-    props: ['mbmenu'],
-
     setup(){
+      const store = useStore();
+      const mbmenu = computed( () => store.getters.getMbMenuData );
+      store.dispatch('fetchMenu');
+
       // 화면 html 구성이 완료된 후
       onMounted(() => {
         // 모바일 메뉴
@@ -91,7 +94,7 @@
         });
       });
       return {
-
+        mbmenu
       }
     }
   }
